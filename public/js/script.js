@@ -1,16 +1,15 @@
-$(document).on('click', '#add-button', (event) => {
-    window.location.href = '/add';
+$('#enter').on('click', (event) => {
+    console.log('click');
+    window.location.href = '/enter';
     console.log("click")
 })
-$(document).on('click', '#remove-button', (event) => {
-    window.location.href = '/remove';
+$('#update').on('click', (event) => {
+    console.log('click');
+    window.location.href = '/update';
     console.log("click")
 })
-$(document).on('click', '#add-new-color', (event) => {
-    window.location.href = '/addnew';
-    console.log("click")
-})
-$(document).on('click', '#delete', (event) => {
-    window.location.href = '/delete';
+$('#create-new').on('click', (event) => {
+    console.log('click');
+    window.location.href = '/create-new';
     console.log("click")
 })

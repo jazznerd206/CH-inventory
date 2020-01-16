@@ -5,20 +5,14 @@ const router = express.Router;
 router.get('/', (_req, res) => {
 	res.send('index');
 });
-router.get('/add', (_req, res) => {
-    res.render('addto')
+router.get('/enter', (_req, res) => {
+    res.render('crud-selector')
 });
-router.get('/remove', (_req, res) => {
-    res.render('removefrom')
+router.get('/update', (_req, res) => {
+    res.render('update-selector')
 });
-router.get('/addnew', (_req, res) => {
-    res.render('addnew')
-});
-router.get('/delete', (_req, res) => {
-    res.render('delete')
-});
-router.get('/viewall', (_req, res) => {
-    res.render('totals')
+router.get('/create-new', (_req, res) => {
+    res.render('create-new')
 });
 
 module.exports = router;

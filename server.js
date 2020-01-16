@@ -33,7 +33,6 @@ require('./routes/index')(app);
 
 var syncOptions = { force: false };
 
-//app.use(routes);
 
 app.listen(PORT, function() {
 	console.log('listening on port ' + PORT);

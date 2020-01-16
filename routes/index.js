@@ -1,20 +1,14 @@
 module.exports = function(app) {
-    app.get('/', (function(_req, res) {
+    app.get('/', (function(req, res) {
         res.render('index');
     }))
-    app.get('/add', (function(_req, res) {
-        res.render('addto');
+    app.get('/enter', (function(req, res) {
+        res.render('crud-selector');
     }))
-    app.get('/remove', (function(_req, res) {
-        res.render('removefrom');
+    app.get('/update', (function(req, res) {
+        res.render('update-selector');
     }))
-    app.get('/addnew', (function(_req, res) {
-        res.render('addnew');
-    }))
-    app.get('/delete', (function(_req, res) {
-        res.render('delete');
-    }))
-    app.get('/viewall', (function(_req, res) {
-        res.render('totalselector');
+    app.get('/create-new', (function(req, res) {
+        res.render('create-new');
     }))
 }

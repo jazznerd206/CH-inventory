@@ -5,15 +5,17 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new NoteSchema object
 // This is similar to a Sequelize model
-var NoteSchema = new Schema({
+var ColorSchema = new Schema({
   // `title` is of type String
-  title: String,
+  colorCode: { type: Number, required:true },
   // `body` is of type String
-  body: String
+  weightIn: { type: Number, required:true },
+  price: { type: Number, required:false },
+  timestamp: { type: Date, default:Date.now(), required:true }
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Note = mongoose.model("Note", NoteSchema);
+var Color = mongoose.model("Color", ColorSchema);
 
 // Export the Note model
-module.exports = Note;
+module.exports = Color;

@@ -29,7 +29,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (error) => {
 });
 
 require('./routes/index')(app);
-
+app.use(require('./controllers/webcontroller'));
 
 var syncOptions = { force: false };
 

@@ -1,2 +1,2 @@
-# CH-inventory
-Inventory App
+# inventory-app
+inventory app

@@ -14,5 +14,8 @@ router.get('/update', (_req, res) => {
 router.get('/create-new', (_req, res) => {
     res.render('create-new')
 });
+router.get('/create-new-reichenbach-bar', (_req, res) => {
+    res.render('reichenbach-bar-entry')
+});
 
 module.exports = router;

@@ -11,4 +11,7 @@ module.exports = function(app) {
     app.get('/create-new', (function(req, res) {
         res.render('create-new');
     }))
+    app.get('/create-new-reichenbach-bar', (function(req, res) {
+        res.render('reichenbach-bar-entry');
+    }))
 }

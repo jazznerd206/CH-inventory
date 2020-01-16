@@ -1,9 +1,29 @@
 const express = require('express');
-
+const passport = require('passport');
+const mongoose = require('mongoose');
 const router = express.Router();
+const User = require('../models/User')
 
-router.get('/', (_req, res) => {
-	res.send('index');
+router.get('/', function(req, res) {
+    res.render('index', {user: req.user});
+  });
+router.get('/register', function(req, res) {
+    res.render('register', {});
+});
+
+router.post('/register', function(req, res, next) {
+    let newUser = new User ({username:req.body.username, password:req.body.currentPassword, email:req.body.email});
+    console.log(newUser);
+    User.register(newUser), req.body.currentPassword, function(err) {
+        if (err) {
+        console.log('error while user register!', err);
+        return next(err);
+    }
+
+    console.log('user registered!');
+
+    res.redirect('/');
+    };
 });
 router.get('/enter', (_req, res) => {
     res.render('crud-selector')

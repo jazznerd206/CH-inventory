@@ -12,9 +12,9 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res, next) {
-    let newUser = new User ({username:req.body.username, password:req.body.currentPassword, email:req.body.email});
+    let newUser = new User ({username:req.body.registerUsername, password:req.body.registerPassword, email:req.body.registerEmail});
     console.log(newUser);
-    User.register(newUser), req.body.currentPassword, function(err) {
+    User.register((newUser), req.body.registerPassword, function(err) {
         if (err) {
         console.log('error while user register!', err);
         return next(err);
@@ -23,7 +23,7 @@ router.post('/register', function(req, res, next) {
     console.log('user registered!');
 
     res.redirect('/');
-    };
+    });
 });
 router.get('/enter', (_req, res) => {
     res.render('crud-selector')

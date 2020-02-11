@@ -40,32 +40,18 @@ router.get('/login', function(req, res) {
 // route for log out
 
 
+// route for posting data, using color model, to mongoDB
+router.get('/newRBar', (req, res) => {
+    const reichBar = {};
+    reichBar.colorCode = req.body.colorCode;
+    reichBar.weightIn = req.body.weightIn;
+    console.log('reichbar')
+})
 
 
 
 
-router.get('/enter', (_req, res) => {
-    res.render('crud-selector')
-});
-router.get('/update', (_req, res) => {
-    res.render('update-selector')
-});
-router.get('/create-new', (_req, res) => {
-    res.render('create-new')
-});
-router.get('/create-new-reichenbach-bar', (_req, res) => {
-    res.render('reichenbach-bar-entry')
-});
-router.get('/create-new-reichenbach-frit', (_req, res) => {
-    res.render('reichenbach-frit-entry')
-});
-// post new color
-router.post("/new-reichenbach-bar", (req, res) => {
-    const colorCode = $('#colorCode');
-    const weightIn = $('#weightIn')
-    console.log('colorCode' +  colorCode,'weightIn' + weightIn)   
-    res.render('/reichenbach-frit-entry');
-});
+// route for grabbing data
 
 
 module.exports = router;

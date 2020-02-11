@@ -59,7 +59,6 @@ app.use('/', require('./routes/index'));
 
 var syncOptions = { force: false };
 
-
 app.listen(PORT, function() {
 	console.log('listening on port ' + PORT + ' db: ' + MONGODB_URI);
 });

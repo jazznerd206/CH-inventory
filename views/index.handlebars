@@ -13,13 +13,13 @@
                   ADD NEW
               </div>
               <div class="reveal" id="reichBarEntryForm" data-reveal>
-                <form class="newRBar">
-                    <label for="">NEW REIECHENBACH BAR</label>
+                <form class="newRBar" action="/saveNewRBar" method="post">
+                    <label for="">NEW REICHENBACH BAR</label>
                     Color Code:
                     <input name="colorCode" type="text" id="colorCode">
                     Weight In:
                     <input name="weightIn" type="text" id="weightIn">
-                    <input type="submit" value="Submit">
+                    <p><input type="submit" class="button expanded" id="submit" value="Save" data-close></input></p>
                 </form>
               </div>
           </div>

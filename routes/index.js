@@ -41,11 +41,11 @@ router.get('/login', function(req, res) {
 // route for log out
 
 
-// route for posting data, using color model, to mongoDB
+// route for posting new reichenbach bar data, using color model, to mongoDB
 router.post('/saveNewRBar', (req, res) => {
     console.log('router.get');
     res.render('index', {username: req.loginUsername, message: req.flash('error')});
-    let newRBar = new Color ({colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    let newRBar = new Color ({companyCode:"R",colorCode:req.body.colorCode,weightIn:req.body.weightIn});
     console.log('router.post' + newRBar);
     Color.create(newRBar)
         .then(data => console.log('new color added: ' + data))
@@ -53,9 +53,39 @@ router.post('/saveNewRBar', (req, res) => {
 })
 
 
+// route for posting new kugler bar data, using color model, to mongoDB
+router.post('/saveNewKBar', (req, res) => {
+    console.log('router.get');
+    res.render('index', {username: req.loginUsername, message: req.flash('error')});
+    let newKBar = new Color ({companyCode:"K",colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    console.log('router.post' + newKBar);
+    Color.create(newKBar)
+        .then(data => console.log('new color added: ' + data))
+        .catch(err => console.log(err))
+})
 
+// route for posting new gaffer bar data, using color model, to mongoDB
+router.post('/saveNewGBar', (req, res) => {
+    console.log('router.get');
+    res.render('index', {username: req.loginUsername, message: req.flash('error')});
+    let newGBar = new Color ({companyCode:"G",colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    console.log('router.post' + newGBar);
+    Color.create(newGBar)
+        .then(data => console.log('new color added: ' + data))
+        .catch(err => console.log(err))
+})
 
-// route for grabbing data
+// route for posting new zimmerman bar data, using color model, to mongoDB
+router.post('/saveNewZBar', (req, res) => {
+    console.log('router.get');
+    res.render('index', {username: req.loginUsername, message: req.flash('error')});
+    let newZBar = new Color ({companyCode:"Z",colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    console.log('router.post' + newZBar);
+    Color.create(newZBar)
+        .then(data => console.log('new color added: ' + data))
+        .catch(err => console.log(err))
+})
+
 
 
 module.exports = router;

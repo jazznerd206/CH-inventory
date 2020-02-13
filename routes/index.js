@@ -42,13 +42,14 @@ router.get('/login', function(req, res) {
 
 
 // route for posting data, using color model, to mongoDB
-router.get('/saveNewRBar', (req, res) => {
+router.post('/saveNewRBar', (req, res) => {
     console.log('router.get');
     res.render('index', {username: req.loginUsername, message: req.flash('error')});
-})
-router.post('/saveNewRBar', (req, res, next) => {
-    const newRBar = new Color ({colorCode:req.body.colorCode,weightIn:req.body.weightIn});
-    console.log(newRBar);
+    let newRBar = new Color ({colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    console.log('router.post' + newRBar);
+    Color.create(newRBar)
+        .then(data => console.log('new color added: ' + data))
+        .catch(err => console.log(err))
 })
 
 

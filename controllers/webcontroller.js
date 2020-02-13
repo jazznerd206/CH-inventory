@@ -1,20 +1,17 @@
+var express = require("express");
+
+var router = express.Router();
+
+const db = require('../models')
+
+
 module.exports = function(app) {
-    app.get('/', (function(req, res) {
-        res.render('index');
-    }))
-    app.get('/enter', (function(req, res) {
-        res.render('crud-selector');
-    }))
-    app.get('/update', (function(req, res) {
-        res.render('update-selector');
-    }))
-    app.get('/create-new', (function(req, res) {
-        res.render('create-new');
-    }))
-    app.get('/create-new-reichenbach-bar', (function(req, res) {
-        res.render('reichenbach-bar-entry');
-    }))
-    app.get('/create-new-reichenbach-frit', (function(req, res) {
-        res.render('reichenbach-frit-entry');
+    app.get('/reichenbachBar', (function(req, res) {
+        db.Color.find({})
+            .then((data) => {
+                const hbsObject = {color:data};
+                console.log(hbsObject)
+                res.render('index', hbsObject);
+            })
     }))
 }

@@ -2,7 +2,8 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const router = express.Router();
-const User = require('../models/User')
+const User = require('../models/User');
+const Color = require('../models/Color');
 
 // load index handlebars
 router.get('/', function(req, res) {
@@ -30,42 +31,31 @@ router.post('/register', function(req, res, next) {
 
 // route for loggin in user
 router.get('/login', function(req, res) {
-    res.render('crud-selector', {username: req.loginUsername, message: req.flash('error')});
+    res.render('index', {username: req.loginUsername, message: req.flash('error')});
   });
   
   router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
-      res.redirect('/enter');
+      res.redirect('/');
     });
 
 // route for log out
 
 
+// route for posting data, using color model, to mongoDB
+router.post('/saveNewRBar', (req, res) => {
+    console.log('router.get');
+    res.render('index', {username: req.loginUsername, message: req.flash('error')});
+    let newRBar = new Color ({colorCode:req.body.colorCode,weightIn:req.body.weightIn});
+    console.log('router.post' + newRBar);
+    Color.create(newRBar)
+        .then(data => console.log('new color added: ' + data))
+        .catch(err => console.log(err))
+})
 
 
 
 
-router.get('/enter', (_req, res) => {
-    res.render('crud-selector')
-});
-router.get('/update', (_req, res) => {
-    res.render('update-selector')
-});
-router.get('/create-new', (_req, res) => {
-    res.render('create-new')
-});
-router.get('/create-new-reichenbach-bar', (_req, res) => {
-    res.render('reichenbach-bar-entry')
-});
-router.get('/create-new-reichenbach-frit', (_req, res) => {
-    res.render('reichenbach-frit-entry')
-});
-// post new color
-router.post("/new-reichenbach-bar", (req, res) => {
-    const colorCode = $('#colorCode');
-    const weightIn = $('#weightIn')
-    console.log('colorCode' +  colorCode,'weightIn' + weightIn)   
-    res.render('/reichenbach-frit-entry');
-});
+// route for grabbing data
 
 
 module.exports = router;

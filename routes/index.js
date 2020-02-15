@@ -52,6 +52,9 @@ router.post('/saveNewRBar', (req, res) => {
         .catch(err => console.log(err))
 })
 
+// route for updating existing R bar record using mongo CRUD ops
+// router.post('')
+
 
 // route for posting new kugler bar data, using color model, to mongoDB
 router.post('/saveNewKBar', (req, res) => {

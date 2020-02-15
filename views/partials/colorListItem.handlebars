@@ -1,16 +1,30 @@
+<li>
 <div class="grid-x">
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Company: {{companyCode}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Code: {{colorCode}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Quantity: {{weightIn}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
-        <div class="button" data-id="{{_id}}">Add</div>
+    <div class="cell small-3">
+        <div class="button" data-id="{{_id}}" data-open="updateRBar{{_id}}">
+            Add
+            <div class="reveal" id="updateRBar{{_id}}" data-reveal>
+                UPDATE BAR MODAL {{_id}}
+                    <form class="updateRBar" action="/updateRBar" method="post">
+                      <label for="">UPDATE REICHENBACH BAR</label>
+                      Add to: {{companyCode}} {{colorCode}}
+                      <input name="weightIn" type="text" id="weightIn">
+                      Remove from: {{companyCode}} {{colorCode}}
+                      <input name="weightOut" type="text" id="weightOut">
+                      <p><input type="submit" class="button expanded" id="updateBar" value="Update Record" data-close></input></p>
+                  </form>
+            </div>
+        </div>
         <div class="button" data-id="{{_id}}">Remove</div> 
     </div>
 </div>
-
+</li>

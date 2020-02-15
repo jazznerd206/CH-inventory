@@ -10,7 +10,7 @@ module.exports = function(app) {
         db.Color.find({'companyCode': "R"})
             .then((data) => {
                 const reichenbachBarhbsObject = {color:data};
-                console.log(reichenbachBarhbsObject)
+                //console.log(reichenbachBarhbsObject)
                 res.render('index', reichenbachBarhbsObject);
             })
     }))

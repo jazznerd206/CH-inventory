@@ -1,16 +1,35 @@
+<li>
 <div class="grid-x">
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Company: {{companyCode}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Code: {{colorCode}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
+    <div class="cell small-3">
         Quantity: {{weightIn}} 
     </div>
-    <div class="cell small-3" data-id="{{_id}}">
-        <div class="button" data-id="{{_id}}">Add</div>
-        <div class="button" data-id="{{_id}}">Remove</div> 
+    <div class="cell small-3">
+        <div class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
+            Add
+            <div class="reveal" id="addtoRBar{{_id}}" data-reveal>
+                <form class="addtoRBar" action="/addtoRBar/{{id}}" method="post">
+                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
+                    <input name="weightIn" type="text" id="weightIn">
+                    <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
+                </form>
+            </div>
+        </div>
+        <div class="button subtract-id" data-id="{{_id}}" data-open="subtractRBar{{_id}}">
+            Remove
+            <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
+                <form class="subtractRBar" action="/subtractRBar/{{id}}" method="post">
+                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
+                    <input name="weightOut" type="text" id="weightOut">
+                    <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>
+                </form>
+            </div>
+        </div> 
     </div>
 </div>
-
+</li>

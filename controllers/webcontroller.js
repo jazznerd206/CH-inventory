@@ -1,39 +1,39 @@
 var express = require("express");
 
 var router = express.Router();
-
+const Color = require('../models/Color');
 const db = require('../models')
 
 
 module.exports = function(app) {
     app.get('/reichenbachBar', (function(req, res) {
-        db.Color.find({'companyCode': "R"})
+        db.Color.find({'companyCode': "reichenbach", 'type': 'bar'})
             .then((data) => {
-                const reichenbachBarhbsObject = {color:data};
+                const reichenbachBarhbsObject = {bar:data};
                 //console.log(reichenbachBarhbsObject)
                 res.render('index', reichenbachBarhbsObject);
             })
     }))
     app.get('/kuglerBar', (function(req, res) {
-        db.Color.find({'companyCode': "K"})
+        db.Color.find({'companyCode': "kugler", 'type': 'bar'})
             .then((data) => {
-                const kuglerBarhbsObject = {color:data};
+                const kuglerBarhbsObject = {bar:data};
                 console.log(kuglerBarhbsObject)
                 res.render('index', kuglerBarhbsObject);
             })
     }))
     app.get('/gafferBar', (function(req, res) {
-        db.Color.find({'companyCode': "G"})
+        db.Color.find({'companyCode': "gaffer", 'type': 'bar'})
             .then((data) => {
-                const gafferBarhbsObject = {color:data};
+                const gafferBarhbsObject = {bar:data};
                 console.log(gafferBarhbsObject)
                 res.render('index', gafferBarhbsObject);
             })
     }))
     app.get('/zimmermanBar', (function(req, res) {
-        db.Color.find({'companyCode': "Z"})
+        db.Color.find({'companyCode': "zimmerman", 'type': 'bar'})
             .then((data) => {
-                const zimmermanBarhbsObject = {color:data};
+                const zimmermanBarhbsObject = {bar:data};
                 console.log(zimmermanBarhbsObject)
                 res.render('index', zimmermanBarhbsObject);
             })
@@ -73,5 +73,34 @@ module.exports = function(app) {
                     .catch(err => console.log('db update error' + err))
                 res.render('index');
             }).catch(err => console.log('db find error ' + err))
+    })
+    app.post('/addtodb',  (req, res) => {
+        console.log('form submitted');
+        console.log(req.body.weight);
+        console.log(req.body.companyCode);
+        console.log(req.body.colorCode);
+        if (req.body.function === "new") {
+        let newEntry = new Color ({companyCode:req.body.companyCode,colorCode:req.body.colorCode,weight:req.body.weight,type:req.body.type});
+        console.log('router.post' + newEntry);
+        Color.create(newEntry)
+            .then(data => console.log('new color added: ' + data))
+            .catch(err => console.log(err)) 
+        } else if (req.body.function === "add") {
+            const add = req.body.weight;
+            console.log(add);
+            db.Color.find({'companyCode' : req.body.companyCode, 'colorCode': req.body.colorCode, 'type': req.body.type})
+                .then(data => {
+                    console.log('starting weight ' + data);
+                    const id = data[0]._id;
+                    console.log(id);
+                    const startingWeight = parseFloat(data[0].weight);
+                    const returnWeight = parseFloat(startingWeight) + parseFloat(add);
+                    console.log(typeof returnWeight);
+                    db.Color.update({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
+                        .then(data => console.log(data))
+                        .catch(err => console.log('db update error ' + err))
+                    res.render('index');
+                }).catch(err => console.log('db find error ' + err))
+        }
     })
 }

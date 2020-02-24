@@ -10,26 +10,7 @@
         Quantity: {{weight}} 
     </div>
     <div class="cell small-3">
-        <div class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
-            Add
-            <div class="reveal" id="addtoRBar{{_id}}" data-reveal>
-                <form class="addtoRBar" action="/addtoRBar/{{id}}" method="post">
-                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
-                    <input name="weightIn" type="text" id="weightIn">
-                    <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
-                </form>
-            </div>
-        </div>
-        <div class="button subtract-id" data-id="{{_id}}" data-open="subtractRBar{{_id}}">
-            Remove
-            <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
-                <form class="subtractRBar" action="/subtractRBar/{{id}}" method="post">
-                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
-                    <input name="weightOut" type="text" id="weightOut">
-                    <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>
-                </form>
-            </div>
-        </div> 
+        <div class="button" id='deleteColor{{_id}}' onclick="window.location.href = '/delete/{{_id}}';">Remove</div>
     </div>
 </div>
 </li>

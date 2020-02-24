@@ -38,6 +38,38 @@ module.exports = function(app) {
                 res.render('index', zimmermanBarhbsObject);
             })
     }))
+    app.get('/reichenbachFrit', (function(req, res) {
+        db.Color.find({'companyCode': "reichenbach", 'type': 'frit'})
+            .then((data) => {
+                const reichenbachBarhbsObject = {frit:data};
+                //console.log(reichenbachBarhbsObject)
+                res.render('index', reichenbachBarhbsObject);
+            })
+    }))
+    app.get('/kuglerFrit', (function(req, res) {
+        db.Color.find({'companyCode': "kugler", 'type': 'frit'})
+            .then((data) => {
+                const kuglerBarhbsObject = {frit:data};
+                console.log(kuglerBarhbsObject)
+                res.render('index', kuglerBarhbsObject);
+            })
+    }))
+    app.get('/gafferFrit', (function(req, res) {
+        db.Color.find({'companyCode': "gaffer", 'type': 'frit'})
+            .then((data) => {
+                const gafferBarhbsObject = {frit:data};
+                console.log(gafferBarhbsObject)
+                res.render('index', gafferBarhbsObject);
+            })
+    }))
+    app.get('/zimmermanFrit', (function(req, res) {
+        db.Color.find({'companyCode': "zimmerman", 'type': 'frit'})
+            .then((data) => {
+                const zimmermanBarhbsObject = {frit:data};
+                console.log(zimmermanBarhbsObject)
+                res.render('index', zimmermanBarhbsObject);
+            })
+    }))
     // route for updating existing R bar record using mongo CRUD ops
     app.post('/addtoRBar/:id', (req, res) => {
         console.log('route clicked');
@@ -96,11 +128,35 @@ module.exports = function(app) {
                     const startingWeight = parseFloat(data[0].weight);
                     const returnWeight = parseFloat(startingWeight) + parseFloat(add);
                     console.log(typeof returnWeight);
-                    db.Color.update({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
+                    db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
                         .then(data => console.log(data))
                         .catch(err => console.log('db update error ' + err))
                     res.render('index');
                 }).catch(err => console.log('db find error ' + err))
+        } else if (req.body.function === "remove") {
+            const add = req.body.weight;
+            console.log(add);
+            db.Color.find({'companyCode' : req.body.companyCode, 'colorCode': req.body.colorCode, 'type': req.body.type})
+                .then(data => {
+                    console.log('starting weight ' + data);
+                    const id = data[0]._id;
+                    console.log(id);
+                    const startingWeight = parseFloat(data[0].weight);
+                    const returnWeight = parseFloat(startingWeight) - parseFloat(add);
+                    console.log(typeof returnWeight);
+                    db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
+                        .then(data => console.log(data))
+                        .catch(err => console.log('db update error ' + err))
+                    res.render('index');
+                }).catch(err => console.log('db find error ' + err))
+        } else {
+            alert("please select a function type")
         }
+    })
+    app.get('/delete/:id', (req, res) => {
+        console.log('delete route')
+        console.log(req.params.id);
+        db.Color.deleteOne( { "_id" : req.params.id})
+            .then(res.redirect('/')).catch(err => console.olog(err))
     })
 }

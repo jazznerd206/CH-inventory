@@ -84,23 +84,23 @@
   </div>
 
       <a href="#" class="title">
-          <div class="button cell-small-12" onclick="">
+          <div class="button cell-small-12" onclick="window.location.href = '/reichenbachFrit';">
               REICHENBACH FRIT
           </div>
-          <div class="button cell-small-12" onclick="">
+          <div class="button cell-small-12" onclick="window.location.href = '/kuglerFrit';">
               KUGLER FRIT
           </div>
-          <div class="button cell-small-12" onclick="">
+          <div class="button cell-small-12" onclick="window.location.href = '/gafferFrit';">
               GAFFER FRIT
           </div>
-          <div class="button cell-small-12" onclick="">
+          <div class="button cell-small-12" onclick="window.location.href = '/zimmermanFrit';">
               ZIMMERMAN FRIT
           </div>
           
       </a>
       <div class="cell small-12" id="reichenbachBarDataHolder">
         <ul>
-          {{#each color}}
+          {{#each frit}}
               {{>colorListItem}}
           {{/each}}
         </ul>

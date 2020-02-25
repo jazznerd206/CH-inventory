@@ -14,7 +14,7 @@
             Add
             <div class="reveal" id="addtoRBar{{_id}}" data-reveal>
                 <form class="addtoRBar" action="/{{type}}/{{companyCode}}/{{id}}/add" method="post">
-                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
+                    <label for="">Add to {{companyCode}} {{colorCode}}</label>
                     <input name="weightIn" type="text" id="weightIn">
                     <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
                 </form>
@@ -24,7 +24,7 @@
             Remove
             <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
                 <form class="subtractRBar" action="/{{type}}/{{companyCode}}/{{id}}/subtract" method="post">
-                    <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
+                    <label for="">Subtract from {{companyCode}} {{colorCode}}</label>
                     <input name="weightOut" type="text" id="weightOut">
                     <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>
                 </form>

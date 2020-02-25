@@ -23,7 +23,7 @@
         <div class="button subtract-id" data-id="{{_id}}" data-open="subtractRBar{{_id}}">
             Remove
             <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
-                <form class="subtractRBar" action="/subtractRBar/{{id}}" method="post">
+                <form class="subtractRBar" action="/{{type}}/{{company}}/{{id}}/subtract" method="post">
                     <label for="">UPDATE {{companyCode}} {{colorCode}}</label>
                     <input name="weightOut" type="text" id="weightOut">
                     <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>

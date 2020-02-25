@@ -9,6 +9,18 @@ const Color = require('../models/Color');
 router.get('/', function(req, res) {
     res.render('index', {user: req.user});
   });
+router.get('/bar', function(req, res) {
+res.render('bar', {user: req.user});
+});
+router.get('/frit', function(req, res) {
+res.render('frit', {user: req.user});
+});
+router.get('/metals', function(req, res) {
+res.render('metals', {user: req.user});
+});
+router.get('/reports', function(req, res) {
+res.render('reports', {user: req.user});
+});
 
 // route for registering new user 
 router.get('/register', function(req, res) {

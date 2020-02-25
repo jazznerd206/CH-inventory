@@ -1,0 +1,30 @@
+{{>navbar}}
+
+<div class="container">
+  <div class="title-container">
+    <h1>COLOR FRIT INVENTORY</h1>
+  </div>
+
+      <a href="#" class="title">
+          <div class="button cell-small-12" onclick="window.location.href = '/frit/reichenbach';">
+              REICHENBACH FRIT
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/frit/kugler';">
+              KUGLER FRIT
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/frit/gaffer';">
+              GAFFER FRIT
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/frit/zimmerman';">
+              ZIMMERMAN FRIT
+          </div>
+          
+      </a>
+      <div class="cell small-12" id="reichenbachBarDataHolder">
+        <ul>
+          {{#each frit}}
+              {{>colorListItem}}
+          {{/each}}
+        </ul>
+      </div>        
+</div>

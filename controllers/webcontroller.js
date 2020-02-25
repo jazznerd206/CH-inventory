@@ -6,68 +6,68 @@ const db = require('../models')
 
 
 module.exports = function(app) {
-    app.get('/reichenbachBar', (function(req, res) {
+    app.get('/bar/reichenbach', (function(req, res) {
         db.Color.find({'companyCode': "reichenbach", 'type': 'bar'})
             .then((data) => {
                 const reichenbachBarhbsObject = {bar:data};
                 //console.log(reichenbachBarhbsObject)
-                res.render('index', reichenbachBarhbsObject);
+                res.render('bar', reichenbachBarhbsObject);
             })
     }))
-    app.get('/kuglerBar', (function(req, res) {
+    app.get('/bar/kugler', (function(req, res) {
         db.Color.find({'companyCode': "kugler", 'type': 'bar'})
             .then((data) => {
                 const kuglerBarhbsObject = {bar:data};
                 console.log(kuglerBarhbsObject)
-                res.render('index', kuglerBarhbsObject);
+                res.render('bar', kuglerBarhbsObject);
             })
     }))
-    app.get('/gafferBar', (function(req, res) {
+    app.get('/bar/gaffer', (function(req, res) {
         db.Color.find({'companyCode': "gaffer", 'type': 'bar'})
             .then((data) => {
                 const gafferBarhbsObject = {bar:data};
                 console.log(gafferBarhbsObject)
-                res.render('index', gafferBarhbsObject);
+                res.render('bar', gafferBarhbsObject);
             })
     }))
-    app.get('/zimmermanBar', (function(req, res) {
+    app.get('/bar/zimmerman', (function(req, res) {
         db.Color.find({'companyCode': "zimmerman", 'type': 'bar'})
             .then((data) => {
                 const zimmermanBarhbsObject = {bar:data};
                 console.log(zimmermanBarhbsObject)
-                res.render('index', zimmermanBarhbsObject);
+                res.render('bar', zimmermanBarhbsObject);
             })
     }))
-    app.get('/reichenbachFrit', (function(req, res) {
+    app.get('/frit/reichenbach', (function(req, res) {
         db.Color.find({'companyCode': "reichenbach", 'type': 'frit'})
             .then((data) => {
                 const reichenbachBarhbsObject = {frit:data};
                 //console.log(reichenbachBarhbsObject)
-                res.render('index', reichenbachBarhbsObject);
+                res.render('frit', reichenbachBarhbsObject);
             })
     }))
-    app.get('/kuglerFrit', (function(req, res) {
+    app.get('/frit/kugler', (function(req, res) {
         db.Color.find({'companyCode': "kugler", 'type': 'frit'})
             .then((data) => {
                 const kuglerBarhbsObject = {frit:data};
                 console.log(kuglerBarhbsObject)
-                res.render('index', kuglerBarhbsObject);
+                res.render('frit', kuglerBarhbsObject);
             })
     }))
-    app.get('/gafferFrit', (function(req, res) {
+    app.get('/frit/gaffer', (function(req, res) {
         db.Color.find({'companyCode': "gaffer", 'type': 'frit'})
             .then((data) => {
                 const gafferBarhbsObject = {frit:data};
                 console.log(gafferBarhbsObject)
-                res.render('index', gafferBarhbsObject);
+                res.render('frit', gafferBarhbsObject);
             })
     }))
-    app.get('/zimmermanFrit', (function(req, res) {
+    app.get('/frit/zimmerman', (function(req, res) {
         db.Color.find({'companyCode': "zimmerman", 'type': 'frit'})
             .then((data) => {
                 const zimmermanBarhbsObject = {frit:data};
                 console.log(zimmermanBarhbsObject)
-                res.render('index', zimmermanBarhbsObject);
+                res.render('frit', zimmermanBarhbsObject);
             })
     }))
     // route for updating existing R bar record using mongo CRUD ops
@@ -81,11 +81,12 @@ module.exports = function(app) {
             .then(data => {
                 console.log('starting weight ' + data);
                 const startingWeight = data[0].weightIn
+                const returnAddress = data[0].type;
                 const returnWeight = parseFloat(startingWeight) + parseFloat(addTo);
                 db.Color.updateOne({"_id" : id}, {$set: {"weightIn":returnWeight}})
                     .then(data => console.log(data))
                     .catch(err => console.log('db update error' + err))
-                res.render('index');
+                res.render(returnAddress);
             }).catch(err => console.log('db find error ' + err))
     })
     // route for updating existing R bar record using mongo CRUD ops

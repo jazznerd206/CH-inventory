@@ -1,0 +1,30 @@
+{{>navbar}}
+
+<div class="container">
+  <div class="title-container">
+    <h1>COLOR BAR INVENTORY</h1>
+  </div>
+
+      <a href="#" class="title">
+          <div class="button cell-small-12" onclick="window.location.href = '/bar/reichenbach';">
+              REICHENBACH BAR
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/bar/kugler';">
+              KUGLER BAR
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/bar/gaffer';">
+              GAFFER BAR
+          </div>
+          <div class="button cell-small-12" onclick="window.location.href = '/bar/zimmerman';">
+              ZIMMERMAN BAR
+          </div>
+          
+      </a>
+      <div class="cell small-12" id="reichenbachBarDataHolder">
+        <ul>
+          {{#each bar}}
+              {{>colorListItem}}
+          {{/each}}
+        </ul>
+      </div>        
+</div>

@@ -1,1 +1,21 @@
 {{>navbar}}
+
+<div class="container">
+  <div class="title-container">
+    <h1>METALS</h1>
+  </div>
+
+      <a href="#" class="title">
+          <div class="button cell-small-12" onclick="window.location.href = '/metals/all';">
+              TOTALS
+          </div>
+          
+      </a>
+      <div class="cell small-12" id="reichenbachBarDataHolder">
+        <ul style="list-style: none;">
+          {{#each metals}}
+              {{>colorListItem}}
+          {{/each}}
+        </ul>
+      </div>        
+</div>

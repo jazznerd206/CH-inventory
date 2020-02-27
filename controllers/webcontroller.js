@@ -70,6 +70,14 @@ module.exports = function(app) {
                 res.render('frit', zimmermanBarhbsObject);
             })
     }))
+    app.get('/metals/all', (function(req, res) {
+        db.Color.find({'type': 'metal'})
+            .then((data) => {
+                const metalsHbsObject = {metals:data};
+                console.log(metalsHbsObject)
+                res.render('metals', metalsHbsObject);
+            })
+    }))
     // route for updating existing R bar record using mongo CRUD ops
     app.post('/bar/:companyCode/:id/add', (req, res) => {
         console.log('route clicked');

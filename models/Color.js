@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var ColorSchema = new Schema({
   companyCode: {type: String, required:true },
-  colorCode: { type: Number, required:true },
+  colorCode: { type: String, required:true },
   weight: { type: Number, required:true },
   type: { type: String, required: true},
   price: { type: Number, required:false },

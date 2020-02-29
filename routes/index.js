@@ -15,7 +15,7 @@ res.render('bar', {user: req.user});
 router.get('/frit', function(req, res) {
 res.render('frit', {user: req.user});
 });
-router.get('/metals', function(req, res) {
+router.get('/metal', function(req, res) {
 res.render('metals', {user: req.user});
 });
 router.get('/reports', function(req, res) {

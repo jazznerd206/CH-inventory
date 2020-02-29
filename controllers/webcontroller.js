@@ -70,13 +70,13 @@ module.exports = function(app) {
                 res.render('frit', zimmermanBarhbsObject);
             })
     }))
-    app.get('/metals/all', (function(req, res) {
+    app.get('/metal/other', (function(req, res) {
         db.Color.find({'type': 'metal'})
             .then((data) => {
                 const metalsHbsObject = {metals:data};
                 console.log(metalsHbsObject)
                 res.render('metals', metalsHbsObject);
-            })
+            }).catch(err => console.log('app get metals error ' + err))
     }))
     // route for updating existing R bar record using mongo CRUD ops
     app.post('/bar/:companyCode/:id/add', (req, res) => {
@@ -210,7 +210,13 @@ module.exports = function(app) {
     app.get('/delete/:id', (req, res) => {
         console.log('delete route')
         console.log(req.params.id);
-        db.Color.deleteOne( { "_id" : req.params.id})
-            .then(res.redirect('/')).catch(err => console.olog(err))
+        db.Color.find({"_id" : req.params.id}).then(data => {
+            const company = data[0].companyCode;
+            const type = data[0].type;
+            db.Color.deleteOne( { "_id" : req.params.id})
+            .then(res.redirect('/' + type + '/' + company))
+            .catch(err => console.log('color delete error ' +err))
+        })
+        .catch(err => console.log('color find error ' + err))
     })
 }

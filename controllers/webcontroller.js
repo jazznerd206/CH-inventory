@@ -1,5 +1,5 @@
 var express = require("express");
-
+const passport = require('passport');
 var router = express.Router();
 const Color = require('../models/Color');
 const db = require('../models')
@@ -23,7 +23,15 @@ module.exports = function(app) {
         });
     });
     // login registered user
-
+    app.get('/login', function(req, res, next) {
+        res.redirect('/login');
+    })
+    app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', failureFlash: true }), function(req, res){
+        console.log(req.body.loginUsername)
+        console.log('log in route');
+        console.log(req.isAuthenticated)
+        res.redirect('/');
+    })
 
 
 

@@ -28,7 +28,8 @@ router.get('/login', function(req, res) {
     res.render('index', {username: req.loginUsername, message: req.flash('error')});
   });
   
-  router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
+  router.post('/login', passport.authenticate('local', { failureRedirect: '/login',         failureFlash: true }), function(req, res){
+    console.log(req.body.loginUsername)
       res.redirect('/');
     });
 

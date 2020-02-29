@@ -40,11 +40,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Configure passport-local to use account model for authentication
-const User = require('./models/User')
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // Connect to the Mongo DB
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/inventory";

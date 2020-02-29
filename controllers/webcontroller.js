@@ -3,9 +3,30 @@ var express = require("express");
 var router = express.Router();
 const Color = require('../models/Color');
 const db = require('../models')
+const User = require('../models/User');
 
 
 module.exports = function(app) {
+    // register user
+    app.post('/register', function(req, res, next) {
+        let newUser = new User ({username:req.body.registerUsername, password:req.body.registerPassword, email:req.body.registerEmail});
+        console.log(newUser);
+        User.register((newUser), req.body.registerPassword, function(err) {
+            if (err) {
+            console.log('error while user register!', err);
+            return next(err);
+        }
+    
+        console.log('user registered!');
+    
+        res.redirect('/');
+        });
+    });
+    // login registered user
+
+
+
+
     app.get('/bar/reichenbach', (function(req, res) {
         db.Color.find({'companyCode': "reichenbach", 'type': 'bar'})
             .then((data) => {

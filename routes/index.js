@@ -22,24 +22,6 @@ router.get('/reports', function(req, res) {
 res.render('reports', {user: req.user});
 });
 
-// route for registering new user 
-router.get('/register', function(req, res) {
-    res.render('register', {});
-});
-router.post('/register', function(req, res, next) {
-    let newUser = new User ({username:req.body.registerUsername, password:req.body.registerPassword, email:req.body.registerEmail});
-    console.log(newUser);
-    User.register((newUser), req.body.registerPassword, function(err) {
-        if (err) {
-        console.log('error while user register!', err);
-        return next(err);
-    }
-
-    console.log('user registered!');
-
-    res.redirect('/');
-    });
-});
 
 // route for loggin in user
 router.get('/login', function(req, res) {

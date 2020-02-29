@@ -78,6 +78,30 @@ module.exports = function(app) {
                 res.render('metals', metalsHbsObject);
             }).catch(err => console.log('app get metals error ' + err))
     }))
+    app.get('/reports/monthly', (req, res) => {
+        const now = Date.now();
+        const threeDaysAgo = now - 259200000;
+        const oneMonthAgo = now - 2592000000;
+        const oneQuarterAgo = now - 7776000000;
+        const oneYearAgo = now - 31536000000;
+        db.Color.find()
+            .then(data => {
+                const dataHolder = [];
+                data.forEach(color => {
+                    const entryDate = color.timestamp;
+                    console.log('all results ' + entryDate);
+                    const time = new Date(entryDate);
+                    console.log('time ' + time.getTime());
+                    if (time > oneMonthAgo) {
+                        dataHolder.push(color);
+                    }
+            })
+            console.log(dataHolder);
+            const reportsHbsObject = {reports:dataHolder}
+            res.render('reports', reportsHbsObject);
+        })
+            .catch(err => console.log('find error ' + err))
+    })
     // route for updating existing R bar record using mongo CRUD ops
     app.post('/bar/:companyCode/:id/add', (req, res) => {
         console.log('route clicked');

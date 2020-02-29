@@ -1,13 +1,16 @@
 <li>
 <div class="grid-x line-container">
-    <div class="cell line-item medium-4 small-12 align-self-middle">
-        {{companyCode}} 
+    <div class="cell line-item medium-3 small-12 align-self-middle">
+        {{companyCode}}  {{colorCode}}
     </div>
-    <div class="cell line-item medium-4 small-6 align-self-middle">
-        {{colorCode}} 
+    <div class="cell line-item medium-3 small-12 align-self-middle">
+        Total Available: {{weight}}
     </div>
-    <div class="cell line-item medium-4 small-12 align-self-middle">
-        Quantity: {{weight}} 
+        <div class="cell line-item medium-3 small-12 align-self-middle">
+        Total Adjusted: {{totalQuantityAdjusted}}
+    </div>
+    <div class="cell line-item medium-3 small-12 align-self-middle">
+        Last update: {{lastUpdate}}
     </div>
 </div>
 </li>

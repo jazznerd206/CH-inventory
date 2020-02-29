@@ -88,7 +88,7 @@ module.exports = function(app) {
             .then(data => {
                 const dataHolder = [];
                 data.forEach(color => {
-                    const entryDate = color.timestamp;
+                    const entryDate = color.lastUpdate;
                     //console.log('all results ' + entryDate);
                     const time = new Date(entryDate);
                     //console.log('time ' + time.getTime());
@@ -112,12 +112,14 @@ module.exports = function(app) {
         db.Color.find({'_id' : id})
             .then(data => {
                 //console.log('starting weight ' + data);
+                const adjustmentStarting = data[0].totalQuantityAdjusted;
+                const adjustmentEnding = adjustmentStarting + addTo;
                 const startingWeight = data[0].weight
                 const returnAddress = data[0].type;
                 const companyCode = data[0].companyCode;
                 const returnWeight = parseFloat(startingWeight) + parseFloat(addTo);
                 //console.log(typeof returnWeight);
-                db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
+                db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight), "lastUpdate": Date.now(), "totalQuantityAdjusted":adjustmentEnding}})
                     .then(data => console.log(data))
                     .catch(err => console.log('db update error' + err))
                 res.redirect('/' + returnAddress + '/' + companyCode);
@@ -133,11 +135,13 @@ module.exports = function(app) {
         db.Color.find({'_id' : id})
             .then(data => {
                 //console.log('starting weight ' + data);
+                const adjustmentStarting = data[0].totalQuantityAdjusted;
+                const adjustmentEnding = adjustmentStarting - subtractFrom;
                 const companyCode = data[0].companyCode;
                 const returnAddress = data[0].type;
                 const startingWeight = parseFloat(data[0].weight);
                 const returnWeight = parseFloat(startingWeight) - parseFloat(subtractFrom);
-                db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight)}})
+                db.Color.updateOne({"_id" : id}, {$set: {"weight":parseFloat(returnWeight), "lastUpdate":Date.now(), "totalQuantityAdjusted":adjustmentEnding}})
                     .then(res => console.log(res))
                     .catch(err => console.log('db update error' + err))
                 res.redirect('/' + returnAddress + '/' + companyCode);

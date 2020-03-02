@@ -1,5 +1,4 @@
 const express = require('express');
-const passport = require('passport');
 const mongoose = require('mongoose');
 const router = express.Router();
 const User = require('../models/User');
@@ -8,32 +7,20 @@ const Color = require('../models/Color');
 // load index handlebars
 router.get('/', function(req, res) {
     res.render('index', {user: req.user});
+    console.log(req.user)
   });
 router.get('/bar', function(req, res) {
-res.render('bar', {user: req.user});
-});
-router.get('/frit', function(req, res) {
-res.render('frit', {user: req.user});
-});
-router.get('/metal', function(req, res) {
-res.render('metals', {user: req.user});
-});
-router.get('/reports', function(req, res) {
-res.render('reports', {user: req.user});
-});
-
-
-// route for loggin in user
-router.get('/login', function(req, res) {
-    res.render('index', {username: req.loginUsername, message: req.flash('error')});
+  res.render('bar', {user: req.user});
   });
-  
-  router.post('/login', passport.authenticate('local', { failureRedirect: '/login',         failureFlash: true }), function(req, res){
-    console.log(req.body.loginUsername)
-      res.redirect('/');
-    });
-
-// route for log out
+router.get('/frit', function(req, res) {
+  res.render('frit', {user: req.user});
+  });
+router.get('/metal', function(req, res) {
+  res.render('metals', {user: req.user});
+  });
+router.get('/reports', function(req, res) {
+  res.render('reports', {user: req.user});
+  });
 
 
 // route for posting new reichenbach bar data, using color model, to mongoDB

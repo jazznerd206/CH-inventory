@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('cookie-session');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const routes = require('./routes')
 
 // Require all models
 const db = require("./models");
@@ -41,7 +42,7 @@ app.use(expressSession({
 
 // require routes -- SUBJECT TO CODE REVIEW. COULD USE SOME HYGIENE --
 require('./controllers/webcontroller')(app);
-app.use('/', require('./routes/index'));
+app.use(routes);
 
 // Connect to the Mongo DB
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/inventory";

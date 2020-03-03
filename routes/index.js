@@ -4,6 +4,18 @@ const router = express.Router();
 const User = require('../models/User');
 const Color = require('../models/Color');
 
+
+const authCheck = (req, res, next) => {
+  if (!req.user) {
+    res.status(401).json({
+      authenticated: false,
+      message: "user has not been authenticated"
+    });
+  } else {
+    next();
+  }
+};
+
 // load index handlebars
 router.get('/', function(req, res) {
     res.render('index', {user: req.user});

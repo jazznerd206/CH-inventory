@@ -12,11 +12,13 @@ module.exports = function(app) {
         //console.log(req.body.companyCode);
         //console.log(req.body.colorCode);
         if (req.body.function === "new") {
-        let newEntry = new Color ({companyCode:req.body.companyCode,colorCode:req.body.colorCode,weight:req.body.weight,type:req.body.type});
+        let newEntry = new Color ({companyCode:req.body.companyCode,colorCode:req.body.colorCode,weight:req.body.weight,type:req.body.type,timestamp:req.body.timestamp});
         //console.log('router.post' + newEntry);
         Color.create(newEntry)
             .then(data => console.log('new color added: ' + data))
-            .catch(err => console.log(err)) 
+            .catch(err => {
+                console.log(err)
+            }) 
         } else if (req.body.function === "add") {
             const add = req.body.weight;
             //console.log(add);

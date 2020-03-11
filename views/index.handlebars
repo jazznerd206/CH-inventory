@@ -40,21 +40,23 @@
             <h1>UPDATE RECORDS</h1>
           </div>
           <form class="addtodb" action="/addtodb" method="post">
-              <label for="">New/Add/Remove</label>
+              <label for="function">New/Add/Remove</label>
                 <input type="radio" id="new" name="function" value="new">
                 <label for="new">New</label><br>
                 <input type="radio" id="add" name="function" value="add">
                 <label for="add">Add</label><br>
                 <input type="radio" id="remove" name="function" value="remove">
                 <label for="remove">Remove</label><br>
-              <label for="">Material type:</label>
+              <label for="date">Date</label>
+                <input type="date" id="datepicker" name="timestamp">
+              <label for="type">Material type:</label>
                 <input type="radio" id="bar" name="type" value="bar">
                 <label for="bar">Bar</label><br>
                 <input type="radio" id="frit" name="type" value="frit">
                 <label for="frit">Frit</label><br>
                 <input type="radio" id="metal" name="type" value="metal">
                 <label for="metal">Metal</label><br>
-              <label for="">Company:</label>
+              <label for="company">Company:</label>
                 <input type="radio" id="reichenbach" name="companyCode" value="reichenbach">
                 <label for="reichenbach">Reichenbach</label><br>
                 <input type="radio" id="kugler" name="companyCode" value="kugler">

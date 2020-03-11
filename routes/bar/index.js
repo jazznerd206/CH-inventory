@@ -40,6 +40,9 @@ router.get('/zimmerman', (function(req, res) {
 // route for updating existing R bar record using mongo CRUD ops
 router.post('/:companyCode/:id/add', (req, res) => {
     //console.log('route clicked');
+    console.log('input date ' + req.params.date);
+    var date = new Date(req.params.date);
+    console.log('date ' + date);
     const addTo = req.body.weightIn;
     //console.log(addTo);
     const id = req.params.id;

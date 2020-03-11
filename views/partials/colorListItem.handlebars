@@ -7,15 +7,17 @@
         {{colorCode}} 
     </div>
     <div class="cell line-item medium-3 small-6 align-self-middle">
-        Quantity: {{weight}} 
+        Quantity: {{weight}}
     </div>
     <div class="cell line-item medium-3 small-12 align-self-middle">
         <div class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
             Add
             <div class="reveal" id="addtoRBar{{_id}}" data-reveal>
                 <form class="addtoRBar" action="/{{type}}/{{companyCode}}/{{id}}/add" method="post">
+                    {{!-- <label for="date">Date: </label>
+                        <input type="date" name="date" id="datepicker"> --}}
                     <label for="">Add to {{companyCode}} {{colorCode}}</label>
-                    <input name="weightIn" type="text" id="weightIn">
+                        <input name="weightIn" type="text" id="weightIn">
                     <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
                 </form>
             </div>
@@ -24,8 +26,10 @@
             Remove
             <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
                 <form class="subtractRBar" action="/{{type}}/{{companyCode}}/{{id}}/subtract" method="post">
+                    {{!-- <label for="date">Date: </label>
+                        <input type="date" name="date" id="datepicker"> --}}
                     <label for="">Subtract from {{companyCode}} {{colorCode}}</label>
-                    <input name="weightOut" type="text" id="weightOut">
+                        <input name="weightOut" type="text" id="weightOut">
                     <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>
                 </form>
             </div>

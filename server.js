@@ -41,7 +41,8 @@ app.use(expressSession({
 }));
 
 // require routes -- SUBJECT TO CODE REVIEW. COULD USE SOME HYGIENE --
-require('./controllers/webcontroller')(app);
+require('./controllers/webcontroller.js')(app);
+require('./controllers/auth.controller.js')(app);
 app.use(routes);
 
 // Connect to the Mongo DB

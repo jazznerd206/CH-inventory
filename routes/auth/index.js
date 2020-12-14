@@ -6,7 +6,7 @@ const db = require('../../models')
 router.get('/register', function(req, res) {
     res.render('register');
     });
-  router.get('/login', function(req, res) {
+router.get('/login', function(req, res) {
     res.render('login');
     });
 

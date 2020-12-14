@@ -2,19 +2,112 @@
 
 
 <div class="container">
-  <div class="button-container">
+  <div class='banner'>
+    <h1>Inventory Portal</h1>
+    <div class="content">
+      <ul>
+        <li>Select a material type to view available data tables</li>
+        <li>To update records, see your administrator for credentials.</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="flex-container">
+    <div class="flex-row">
+      <div class="box">
+        <div class="button-container">
+          <div class="title-container">
+            <h3>
+              TYPES
+            </h3>
+          </div>
+          <div class="button" onclick="window.location.href = '/bar';">BAR</div>
+          <div class="button" onclick="window.location.href = '/frit';">FRIT</div>
+          <div class="button" onclick="window.location.href = '/metal';">METALS</div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="button-container">
+            <div class="title-container">
+              <h3>
+                REPORTS
+              </h3>
+            </div>
+            <div class="button" onclick="window.location.href = '/reports';">REPORTS</div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="crud-container">
+              <div class="title-container">
+                <h3>
+                  RECORD BUILDER
+                </h3>
+              </div>
+              <div class="button" data-open="crudModal">
+                START
+              </div>
+              <div class="crudModal">
+                <div class="reveal" id="crudModal" data-reveal>
+                  <div>
+                    <h1>UPDATE RECORDS</h1>
+                  </div>
+                  <form class="addtodb" action="/addtodb" method="post">
+                    <label for="function">New/Add/Remove</label>
+                    <input type="radio" id="new" name="function" value="new">
+                    <label for="new">New</label><br>
+                    <input type="radio" id="add" name="function" value="add">
+                    <label for="add">Add</label><br>
+                    <input type="radio" id="remove" name="function" value="remove">
+                    <label for="remove">Remove</label><br>
+                    <label for="date">Date</label>
+                    <input type="date" id="datepicker" name="timestamp">
+                    <label for="type">Material type:</label>
+                    <input type="radio" id="bar" name="type" value="bar">
+                    <label for="bar">Bar</label><br>
+                    <input type="radio" id="frit" name="type" value="frit">
+                    <label for="frit">Frit</label><br>
+                    <input type="radio" id="metal" name="type" value="metal">
+                    <label for="metal">Metal</label><br>
+                    <label for="company">Company:</label>
+                    <input type="radio" id="reichenbach" name="companyCode" value="reichenbach">
+                    <label for="reichenbach">Reichenbach</label><br>
+                    <input type="radio" id="kugler" name="companyCode" value="kugler">
+                    <label for="kugler">Kugler</label><br>
+                    <input type="radio" id="gaffer" name="companyCode" value="gaffer">
+                    <label for="gaffer">Gaffer</label><br>
+                    <input type="radio" id="zimmerman" name="companyCode" value="zimmerman">
+                    <label for="zimmerman">Zimmerman</label><br>
+                    <input type="radio" id="other" name="companyCode" value="other">
+                    <label for="other">Other</label><br>
+                    <label for="colorCode">Color Code</label>
+                    <input type="text" name="colorCode" id="colorCode">
+                    <label for="">Weight:</label>
+                    <input name="weight" type="text" id="weight">
+                        
+                    <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  {{!-- <div class="button-container">
     <div class="title-container">
       <h3>
-        MATERIAL CATEGORIES
+        TYPES
       </h3>
     </div>
     <div class="button" onclick="window.location.href = '/bar';">BAR</div>
     <div class="button" onclick="window.location.href = '/frit';">FRIT</div>
     <div class="button" onclick="window.location.href = '/metal';">METALS</div>
-    <div class="button" onclick="window.location.href = '/reports';">REPORTS</div>
-  </div>
+  </div> --}}
 
-  <div class="button-container">
+  
+
+  {{!-- <div class="button-container">
     <div class="title-container">
       <h3>
         CHIHULY WORKSHOP
@@ -23,16 +116,16 @@
     <div class="button">
         <h1>UPDATE</h1>
       </div>
-  </div>
+  </div> --}}
 
-    <div class="crud-container">
+    {{!-- <div class="crud-container">
       <div class="title-container">
         <h3>
           RECORD BUILDER
         </h3>
       </div>
       <div class="button" data-open="crudModal">
-        <h1>UPDATE</h1>
+        START
       </div>
       <div class="crudModal">
         <div class="reveal" id="crudModal" data-reveal>
@@ -76,7 +169,7 @@
           </form>
         </div>
       </div>
-    </div>
-</div>
+    </div> --}}
+
 
   

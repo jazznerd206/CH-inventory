@@ -16,10 +16,26 @@ router.use('/auth', authRoutes);
 
 // load index handlebars
 router.get('/', function(req, res) {
-    res.render('index');
-    console.log(req.user)
+    if (req.isAuthenticated()) {
+      var user = {
+        user: req.session.passport.user,
+        isLoggedIn: req.isAuthenticated()
+      }
+      console.log(`user from router.get ${JSON.stringify(user)}`)
+      res.render('index', user);
+    } else {
+      console.log('no user router.get')
+      res.render('index');
+    }
+    
   });
-
+router.get('/auth/logout', function(req, res) {
+    req.session.destroy(function(err){
+    req.logout();
+    res.clearCookie('username');
+    res.redirect('/');
+    })
+});
 
 
 module.exports = router;

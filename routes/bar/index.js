@@ -3,18 +3,30 @@ const router = express.Router();
 const db = require('../../models')
 
 router.get('/', function(req, res) {
-    res.render('bar');
+    if (req.user) {
+        console.log("authenticated")
+    } else {
+        console.log("boop")
+    }
+    const obj = {
+        isLoggedIn: req.isLoggedIn
+    }
+    res.render('bar', obj);
     });
 router.get('/reichenbach', (function(req, res) {
-    db.Color.find({'companyCode': "reichenbach", 'type': 'bar'})
+    db.Color.find({'companyCode': "reichenbach", 'type': 'bar'}).lean()
         .then((data) => {
-            const reichenbachBarhbsObject = {bar:data};
+            const reichenbachBarhbsObject = {
+                user: req.user,
+                isLoggedIn: req.isLoggedIn,
+                bar:data
+            };
             //console.log(reichenbachBarhbsObject)
             res.render('bar', reichenbachBarhbsObject);
         })
 }))
 router.get('/kugler', (function(req, res) {
-    db.Color.find({'companyCode': "kugler", 'type': 'bar'})
+    db.Color.find({'companyCode': "kugler", 'type': 'bar'}).lean()
         .then((data) => {
             const kuglerBarhbsObject = {bar:data};
             //console.log(kuglerBarhbsObject)
@@ -22,7 +34,7 @@ router.get('/kugler', (function(req, res) {
         })
 }))
 router.get('/gaffer', (function(req, res) {
-    db.Color.find({'companyCode': "gaffer", 'type': 'bar'})
+    db.Color.find({'companyCode': "gaffer", 'type': 'bar'}).lean()
         .then((data) => {
             const gafferBarhbsObject = {bar:data};
             //console.log(gafferBarhbsObject)
@@ -30,7 +42,7 @@ router.get('/gaffer', (function(req, res) {
         })
 }))
 router.get('/zimmerman', (function(req, res) {
-    db.Color.find({'companyCode': "zimmerman", 'type': 'bar'})
+    db.Color.find({'companyCode': "zimmerman", 'type': 'bar'}).lean()
         .then((data) => {
             const zimmermanBarhbsObject = {bar:data};
             //console.log(zimmermanBarhbsObject)
@@ -47,7 +59,7 @@ router.post('/:companyCode/:id/add', (req, res) => {
     //console.log(addTo);
     const id = req.params.id;
     //console.log(id);
-    db.Color.find({'_id' : id})
+    db.Color.find({'_id' : id}).lean()
         .then(data => {
             //console.log('starting weight ' + data);
             const adjustmentStarting = data[0].totalQuantityAdjusted;
@@ -70,7 +82,7 @@ router.post('/:companyCode/:id/subtract', (req, res) => {
     //console.log(subtractFrom);
     const id = req.params.id;
     //console.log(id);
-    db.Color.find({'_id' : id})
+    db.Color.find({'_id' : id}).lean()
         .then(data => {
             //console.log('starting weight ' + data);
             const adjustmentStarting = data[0].totalQuantityAdjusted;

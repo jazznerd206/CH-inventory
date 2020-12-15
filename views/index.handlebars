@@ -1,8 +1,8 @@
 {{>navbar}}
 
-{{#if user}}
-<h1>{{user}}</h1>
-{{/if}}
+{{!-- {{#if isLoggedIn}}
+<h1>{{user.username}}</h1>
+{{/if}} --}}
 
 
 <div class="container">
@@ -48,9 +48,16 @@
                   RECORD BUILDER
                 </h3>
               </div>
-              <div class="button" data-open="crudModal">
-                START
-              </div>
+              {{#if isLoggedIn}}
+                <div class="button" data-open="crudModal">
+                  START
+                </div>
+              {{else}}
+                <div class="button" data-open="crudModal" disabled="true">
+                  START
+                </div>
+              {{/if}}
+                
               <div class="crudModal">
                 <div class="reveal" id="crudModal" data-reveal>
                   <div>

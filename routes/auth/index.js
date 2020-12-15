@@ -9,5 +9,12 @@ router.get('/register', function(req, res) {
 router.get('/login', function(req, res) {
     res.render('login');
     });
+router.get('/auth/logout', function(req, res) {
+    req.session.destroy(function(err){
+    req.logout();
+    res.clearCookie('username');
+    res.redirect('/');
+    })
+});
 
 module.exports = router

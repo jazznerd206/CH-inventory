@@ -1,37 +1,37 @@
 const express = require('express');
 var expressSession = require('express-session');
 const exphbs = require('express-handlebars');
-const path = require('path');
+const passport = require('passport');
+const flash = require('connect-flash');
+// const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
-const session = require('cookie-session');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes')
 
 // Require all models
 const db = require("./models");
 
+// Passport config
+require('./config/passport.js')(passport);
+
 // set port for production and development
 const PORT = process.env.PORT || 8080;
-
-// initialize express app
 const app = express();
 
-// serve static files (js, css, images)
-app.use(express.static('public'));
+// body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // set view engine to handlebars
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
+// serve static files (js, css, images)
+app.use(express.static('public'));
+
 // initialize morgan for development debugging
 app.use(logger('dev'));
-
-// body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 
 // initialize express sessions
 app.use(expressSession({
@@ -40,9 +40,13 @@ app.use(expressSession({
 	resave:true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session()); 
+app.use(flash());
+
 // require routes -- SUBJECT TO CODE REVIEW. COULD USE SOME HYGIENE --
-require('./controllers/webcontroller.js')(app);
-require('./controllers/auth.controller.js')(app);
+require('./controllers/webcontroller.js')(app, passport);
+require('./controllers/auth.controller.js')(app, passport);
 app.use(routes);
 
 // Connect to the Mongo DB

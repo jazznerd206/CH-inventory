@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
     res.render('metals');
     });
 router.get('/other', (function(req, res) {
-    db.Color.find({'type': 'metal'})
+    db.Color.find({'type': 'metal'}).lean()
         .then((data) => {
             const metalsHbsObject = {metals:data};
             //console.log(metalsHbsObject)
@@ -21,7 +21,7 @@ router.post('/:companyCode/:id/add', (req, res) => {
     //console.log(addTo);
     const id = req.params.id;
     //console.log(id);
-    db.Color.find({'_id' : id})
+    db.Color.find({'_id' : id}).lean()
         .then(data => {
             //console.log('starting weight ' + data);
             const adjustmentStarting = data[0].totalQuantityAdjusted;
@@ -44,7 +44,7 @@ router.post('/:companyCode/:id/subtract', (req, res) => {
     //console.log(subtractFrom);
     const id = req.params.id;
     //console.log(id);
-    db.Color.find({'_id' : id})
+    db.Color.find({'_id' : id}).lean()
         .then(data => {
             //console.log('starting weight ' + data);
             const adjustmentStarting = data[0].totalQuantityAdjusted;

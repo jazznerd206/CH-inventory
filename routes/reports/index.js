@@ -11,7 +11,7 @@ router.get('/monthly', (req, res) => {
     const oneMonthAgo = now - 2592000000;
     const oneQuarterAgo = now - 7776000000;
     const oneYearAgo = now - 31536000000;
-    db.Color.find()
+    db.Color.find().lean()
         .then(data => {
             const dataHolder = [];
             data.forEach(color => {

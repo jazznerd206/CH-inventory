@@ -83,18 +83,18 @@ h3 {
     text-transform: uppercase;
 }
 
-.form label {
+.form, .addtodb label {
     text-align: left;
     text-transform: lowercase;
     font-variant: small-caps;
 }
 
-.form input {
+.form, .addtodb input {
     border: none;
     box-shadow: inset 0px 0px 3px rgb(0,0,0,.5);
 }
 
-.form input:focus {
+.form, .addtodb input:focus {
     font-size: large;
     border: none;
     border-bottom: 1px dashed rgb(100,100,100,.15);
@@ -154,6 +154,10 @@ h3 {
     padding-top: 50px;
     padding-bottom: 50px;
     margin-bottom: 50px;
+}
+
+.addtodb {
+    text-align: left;
 }
 
 ul {

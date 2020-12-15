@@ -1,6 +1,6 @@
-{{#if isLoggedIn}}
+{{!-- {{#if isLoggedIn}}
 <h1>{{user.username}}</h1>
-{{/if}}
+{{/if}} --}}
 
 <li>
     <div class="grid-x line-container">
@@ -14,7 +14,7 @@
             Quantity: {{weight}}
         </div>
         <div class="cell line-item medium-3 small-12 align-self-middle">
-            <div class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
+            <button class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
                 Add
                 <div class="reveal" id="addtoRBar{{_id}}" data-reveal>
                     <form class="addtoRBar" action="/{{type}}/{{companyCode}}/{{_id}}/add" method="post">
@@ -25,8 +25,8 @@
                         <p><input type="submit" class="button expanded" id="addtoRBar" value="Add" data-close></input></p>
                     </form>
                 </div>
-            </div>
-            <div class="button subtract-id" data-id="{{_id}}" data-open="subtractRBar{{_id}}">
+            </button>
+            <button class="button subtract-id" data-id="{{_id}}" data-open="subtractRBar{{_id}}">
                 Remove
                 <div class="reveal" id="subtractRBar{{_id}}" data-reveal>
                     <form class="subtractRBar" action="/{{type}}/{{companyCode}}/{{_id}}/subtract" method="post">
@@ -37,10 +37,10 @@
                         <p><input type="submit" class="button expanded" id="subtractRBar" value="Subtract" data-close></input></p>
                     </form>
                 </div>
-            </div>
-            <div class="button" id='deleteColor{{_id}}' onclick="window.location.href = '/delete/{{_id}}';">
+            </button>
+            <button class="button" id='deleteColor{{_id}}' onclick="window.location.href = '/delete/{{_id}}';">
                 Delete
-            </div>
+            </button>
         </div>
     </div>
 </li>

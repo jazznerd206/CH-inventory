@@ -3,38 +3,63 @@ const router = express.Router();
 const db = require('../../models')
 
 router.get('/', function(req, res) {
-    res.render('frit');
+    if (req.isAuthenticated()) {
+        console.log("authenticated")
+        var user = {
+            user: req.session.passport.user,
+            isLoggedIn: req.isAuthenticated()
+        }
+        res.render('frit', user);
+    } else {
+        console.log("boop")
+    }
     });
 router.get('/reichenbach', (function(req, res) {
     db.Color.find({'companyCode': "reichenbach", 'type': 'frit'}).lean()
         .then((data) => {
-            const reichenbachBarhbsObject = {frit:data};
-            //console.log(reichenbachBarhbsObject)
-            res.render('frit', reichenbachBarhbsObject);
+            const user = {
+                user: req.user,
+                isLoggedIn: req.isAuthenticated(),
+                frit:data
+            };
+            //console.log(user)
+            res.render('frit', user);
         })
 }))
 router.get('/kugler', (function(req, res) {
     db.Color.find({'companyCode': "kugler", 'type': 'frit'}).lean()
         .then((data) => {
-            const kuglerBarhbsObject = {frit:data};
-            //console.log(kuglerBarhbsObject)
-            res.render('frit', kuglerBarhbsObject);
+            const user = {
+                user: req.user,
+                isLoggedIn: req.isAuthenticated(),
+                frit:data
+            };
+            //console.log(user)
+            res.render('frit', user);
         })
 }))
 router.get('/gaffer', (function(req, res) {
     db.Color.find({'companyCode': "gaffer", 'type': 'frit'}).lean()
         .then((data) => {
-            const gafferBarhbsObject = {frit:data};
-            //console.log(gafferBarhbsObject)
-            res.render('frit', gafferBarhbsObject);
+            const user = {
+                user: req.user,
+                isLoggedIn: req.isAuthenticated(),
+                frit:data
+            };
+            //console.log(user)
+            res.render('frit', user);
         })
 }))
 router.get('/zimmerman', (function(req, res) {
     db.Color.find({'companyCode': "zimmerman", 'type': 'frit'}).lean()
         .then((data) => {
-            const zimmermanBarhbsObject = {frit:data};
-            console.log(zimmermanBarhbsObject)
-            res.render('frit', zimmermanBarhbsObject);
+            const user = {
+                user: req.user,
+                isLoggedIn: req.isAuthenticated(),
+                frit:data
+            };
+            console.log(user)
+            res.render('frit', user);
         })
 }))
 // route for updating existing R bar record using mongo CRUD ops

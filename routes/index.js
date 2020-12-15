@@ -15,7 +15,7 @@ router.use('/reports', reportRoutes);
 router.use('/auth', authRoutes);
 
 // load index handlebars
-router.get('/', function(req, res) {
+router.get('/*', function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
         user: req.session.passport.user,

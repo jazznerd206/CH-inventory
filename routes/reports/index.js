@@ -3,7 +3,16 @@ const router = express.Router();
 const db = require('../../models')
 
 router.get('/', function(req, res) {
-    res.render('reports');
+    if (req.isAuthenticated()) {
+        console.log("authenticated")
+        var user = {
+            user: req.session.passport.user,
+            isLoggedIn: req.isAuthenticated()
+        }
+        res.render('reports', user);
+    } else {
+        res.render('reports', user);
+    }
     });
 router.get('/monthly', (req, res) => {
     const now = Date.now();

@@ -4,14 +4,25 @@ const db = require('../../models')
 
 
 router.get('/', function(req, res) {
-    res.render('metals');
+    if (req.isAuthenticated()) {
+        console.log("authenticated")
+        var user = {
+            user: req.session.passport.user,
+            isLoggedIn: req.isAuthenticated()
+        }
+        res.render('metals', user);
+    } else {
+        console.log("boop")
+    }
     });
 router.get('/other', (function(req, res) {
     db.Color.find({'type': 'metal'}).lean()
         .then((data) => {
-            const metalsHbsObject = {metals:data};
-            //console.log(metalsHbsObject)
-            res.render('metals', metalsHbsObject);
+            const user = {
+                metals:data
+            };
+            //console.log(user)
+            res.render('metals', user);
         }).catch(err => console.log('app get metals error ' + err))
 }))
 // route for updating existing R bar record using mongo CRUD ops

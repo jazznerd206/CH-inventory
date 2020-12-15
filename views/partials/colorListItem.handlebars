@@ -1,3 +1,7 @@
+{{#if isLoggedIn}}
+<h1>{{user.username}}</h1>
+{{/if}}
+
 <li>
 <div class="grid-x line-container">
     <div class="cell line-item medium-3 small-12 align-self-middle">
@@ -10,7 +14,7 @@
         Quantity: {{weight}}
     </div>
     <div class="cell line-item medium-3 small-12 align-self-middle">
-        {{#if isLoggedIn}}
+        {{#if user}}
         <div class="button add-id" data-id="{{_id}}" data-open="addtoRBar{{_id}}">
             Add
             <div class="reveal" id="addtoRBar{{_id}}" data-reveal>

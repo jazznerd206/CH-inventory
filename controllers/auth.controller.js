@@ -95,5 +95,14 @@ module.exports = function(app) {
                 res.redirect('/');
             })
             .catch(err => console.log(err))
-    })
+    }),
+
+    // logout of user account
+    app.get('/auth/logout', function(req, res) {
+      req.session.destroy(function(err){
+        req.logout();
+        res.clearCookie('username');
+        res.redirect('/');
+      })
+  });
 }

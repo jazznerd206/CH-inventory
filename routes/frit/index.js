@@ -11,57 +11,89 @@ router.get('/', function(req, res) {
         }
         res.render('frit', user);
     } else {
-        console.log("boop")
+        res.render('frit');
     }
     });
 router.get('/reichenbach', (function(req, res) {
     db.Color.find({'companyCode': "reichenbach", 'type': 'frit'}).lean()
         .then((data) => {
-            const user = {
-                user: req.user,
-                isLoggedIn: req.isAuthenticated(),
-                frit:data
-            };
-            //console.log(user)
-            res.render('frit', user);
+            if (req.user) {
+                const object = {
+                    user: req.session.passport.user,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            } else  {
+                const object = {
+                    user: null,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            }
         })
-}))
+    }))
 router.get('/kugler', (function(req, res) {
     db.Color.find({'companyCode': "kugler", 'type': 'frit'}).lean()
         .then((data) => {
-            const user = {
-                user: req.user,
-                isLoggedIn: req.isAuthenticated(),
-                frit:data
-            };
-            //console.log(user)
-            res.render('frit', user);
+            if (req.user) {
+                const object = {
+                    user: req.session.passport.user,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            } else  {
+                const object = {
+                    user: null,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            }
         })
-}))
+    }))
 router.get('/gaffer', (function(req, res) {
     db.Color.find({'companyCode': "gaffer", 'type': 'frit'}).lean()
         .then((data) => {
-            const user = {
-                user: req.user,
-                isLoggedIn: req.isAuthenticated(),
-                frit:data
-            };
-            //console.log(user)
-            res.render('frit', user);
+            if (req.user) {
+                const object = {
+                    user: req.session.passport.user,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            } else  {
+                const object = {
+                    user: null,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            }
         })
-}))
+    }))
 router.get('/zimmerman', (function(req, res) {
     db.Color.find({'companyCode': "zimmerman", 'type': 'frit'}).lean()
         .then((data) => {
-            const user = {
-                user: req.user,
-                isLoggedIn: req.isAuthenticated(),
-                frit:data
-            };
-            console.log(user)
-            res.render('frit', user);
+            if (req.user) {
+                const object = {
+                    user: req.session.passport.user,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            } else  {
+                const object = {
+                    user: null,
+                    isLoggedIn: req.isAuthenticated(),
+                    frit: data
+                };
+                res.render('frit', object);
+            }
         })
-}))
+    }))
 // route for updating existing R bar record using mongo CRUD ops
 router.post('/:companyCode/:id/add', (req, res) => {
     //console.log('route clicked');

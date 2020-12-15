@@ -12,17 +12,27 @@ router.get('/', function(req, res) {
         }
         res.render('metals', user);
     } else {
-        console.log("boop")
+        res.render('metals');
     }
     });
 router.get('/other', (function(req, res) {
     db.Color.find({'type': 'metal'}).lean()
         .then((data) => {
-            const user = {
-                metals:data
-            };
-            //console.log(user)
-            res.render('metals', user);
+            if (req.user) {
+                const object = {
+                    user: req.session.passport.user,
+                    isLoggedIn: req.isAuthenticated(),
+                    metals: data
+                };
+                res.render('metals', object);
+            } else  {
+                const object = {
+                    user: null,
+                    isLoggedIn: req.isAuthenticated(),
+                    metals: data
+                };
+                res.render('metals', object);
+            }
         }).catch(err => console.log('app get metals error ' + err))
 }))
 // route for updating existing R bar record using mongo CRUD ops

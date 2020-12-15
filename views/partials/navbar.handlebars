@@ -1,21 +1,21 @@
 {{#if isLoggedIn}}
 <div class="navbar-container">
-    <div class="top-bar">
-        <div class="top-bar-left">
+    {{!-- <div class="top-bar"> --}}
+        <div class="top-bar">
             <ul class="dropdown menu" data-dropdown-menu>
-                
+                <h3>Logged in as: </h3><span class="username">{{user.username}}</span>
             </ul>
         </div>
-        <div class="top-bar-right">
+        <div class="top-bar">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li><a href="/auth/logout">Log Out</a></li>
+                <li class="menu-text" onclick="window.location.href = '/';">Home</li>
+                <li><a href="/logout">Log Out</a></li>
                 {{!-- <li><a href="/auth/login">Log In</a></li> --}}
                 {{!-- <li><a href="/auth/register">Register</a></li> --}}
-                <li class="menu-text" onclick="window.location.href = '/';">Home</li>
             </ul>
 
         </div>
-    </div>
+    {{!-- </div> --}}
 </div>
 {{else}}
 <div class="navbar-container">
@@ -27,9 +27,9 @@
         </div>
         <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
-                <li><a href="/auth/login">Log In</a></li>
-                <li><a href="/auth/register">Register</a></li>
                 <li class="menu-text" onclick="window.location.href = '/';">Home</li>
+                <li><a href="/login">Log In</a></li>
+                {{!-- <li><a href="/register">Register</a></li> --}}
             </ul>
 
         </div>

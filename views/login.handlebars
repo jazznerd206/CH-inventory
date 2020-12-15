@@ -1,12 +1,10 @@
-<form action="/api/login" method="post" class="log-in-form">
-    <h4 class="text-center">LOG IN</h4>
-    <label>Username
-        <input type="text" name="username" placeholder="Username">
-    </label>
-    <label>Password
-        <input type="password" name="password" placeholder="Password">
-    </label>
-    <input id="login-show-password" type="checkbox"><label for="show-password">Show password</label>
-    <p><input type="submit" class="button expanded" id="loginEnter" value="Log in"></input></p>
-    <p class="text-center"><a href="#">Forgot your password?</a></p>
+<form action="/login" method="post" class="log-in-form">
+    <div class="form">
+        <h4>LOG IN</h4>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+        <input type="submit" class="button expanded" id="loginEnter" value="Log in"></input>
+    </div>
 </form>

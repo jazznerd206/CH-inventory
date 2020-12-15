@@ -4,7 +4,6 @@ const barRoutes = require('./bar');
 const fritRoutes = require('./frit');
 const metalRoutes = require('./metals')
 const reportRoutes = require('./reports');
-const authRoutes = require('./auth');
 
 
 // route director
@@ -12,10 +11,9 @@ router.use("/bar", barRoutes);
 router.use("/frit", fritRoutes);
 router.use('/metal', metalRoutes);
 router.use('/reports', reportRoutes);
-router.use('/auth', authRoutes);
 
 // load index handlebars
-router.get('/*', function(req, res) {
+router.get('/', function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
         user: req.session.passport.user,
@@ -29,7 +27,13 @@ router.get('/*', function(req, res) {
     }
     
   });
-router.get('/auth/logout', function(req, res) {
+router.get('/register', function(req, res) {
+  res.render('register');
+  });
+router.get('/login', function(req, res) {
+    res.render('login');
+    });
+router.get('/logout', function(req, res) {
     req.session.destroy(function(err){
     req.logout();
     res.clearCookie('username');

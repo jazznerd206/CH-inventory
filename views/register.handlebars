@@ -1,15 +1,14 @@
-<form action="/api/register" method="post" class="sign-up">
-    <h4 class="text-center">Register</h4>
-    <label>Name
-        <input type="text" name="registerUsername" placeholder="John Smith">
-    </label>
-    <label>Email
-        <input type="text" name="registerEmail" placeholder="somebody@example.com">
-    </label>
-    <label>Password
-        <input type="password" name="registerPassword" placeholder="Password">
-    </label>
-    <input id="register-show-password" type="checkbox"><label for="show-password">Show password</label>
+<form action="/register" method="post" class="sign-up">
+    <div class="form">
+        <h3>REGISTER</h3>
+        <label for="registerUsername">Name</label>
+        <input type="text" name="registerUsername" id="registerUsername" placeholder="John Smith">
+        <label for="registerEmail">Email</label>
+        <input type="text" name="registerEmail" id="registerEmail" placeholder="somebody@example.com">
+        <label for="registerPassword">Password</label>
+        <input type="password" name="registerPassword" id="registerPassword" placeholder="Password">
+    </div>
+    {{!-- <input id="register-show-password" type="checkbox"><label for="show-password">Show password</label> --}}
     <p><input type="submit" class="button expanded" id="registerEnter" value="Register"></input></p>
-    <p class="text-center"><a href="#">Forgot your password?</a></p>
+    {{!-- <p class="text-center"><a href="#">Forgot your p/assword?</a></p> --}}
 </form>

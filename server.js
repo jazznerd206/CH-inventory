@@ -24,7 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // set view engine to handlebars
-app.engine('handlebars', exphbs({defaultLayout:'main'}));
+app.engine('handlebars', exphbs({
+	defaultLayout:'main',
+	// partialsDir = ("./views/partials/")
+}));
 app.set('view engine', 'handlebars');
 
 // serve static files (js, css, images)

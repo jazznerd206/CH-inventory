@@ -5,7 +5,7 @@ const crypto = require('crypto');
 
 const User = new Schema({
     username: {type: String, lowercase: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
-    email: {type: String, lowercase: true, unique: true, required: false, match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+    email: {type: String, lowercase: true, unique: false, required: false, match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
     password: String,
 });
 

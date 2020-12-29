@@ -1,6 +1,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -10,6 +11,8 @@
   <p align="center">
     An awesome way to keep track of materials!!
     <br />
+    <a href="https://material-inventory.herokuapp.com"><strong>Live Site »</strong></a>
+    <br/>
     <a href="https://github.com/jazznerd206/CH-inventory"><strong>Explore the docs »</strong></a>
     <br />
     ·
@@ -37,8 +40,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -132,9 +133,10 @@ In order to run this portal locally:
 ### LOGIN/REGISTER
 <img src='./Images/Login.PNG' height="250"></img>
 <img src='./Images/Register.PNG' height="250"></img>
-> Guest Login:
+> Guest Login (FOR LIVE SITE):
   * Username: user
   * Password: password
+> Login/password for project running locally will be different
   
 ### VIEW RECORDS
 1. Select material type to view available data tables
@@ -161,3 +163,19 @@ __BOTH OF THESE METHODS ARE ONLY AVAILABLE WHILE LOGGED IN__
 [issues-url]: https://github.com/jazznerd206/CH-inventory/issues
 [license-shield]: https://img.shields.io/github/license/jazznerd206/CH-inventory.svg?style=for-the-badge
 [license-url]: https://github.com/jazznerd206/CH-inventory/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/andrew-miller-113a1a195/
+
+## License
+* Licensed under the Unlicense, meaning you can use this project or its code in any way you desire. Have at it!! See LICENSE.md for more info.
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+

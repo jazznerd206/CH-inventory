@@ -156,15 +156,8 @@ __BOTH OF THESE METHODS ARE ONLY AVAILABLE WHILE LOGGED IN__
   2. Click the button corresponding to the action you need to perform. For this, you only need the total weight change for the day, the company code and color code are handled.
   > <img src='./Images/Inline2.PNG' width="500"></img>
 ### VIEW REPORTS
-
-[contributors-shield]: https://img.shields.io/github/contributors/jazznerd206/CH-inventory.svg?style=for-the-badge
-[contributors-url]: https://github.com/jazznerd206/CH-inventory/graphs/contributors
-[issues-shield]: https://img.shields.io/github/issues/jazznerd206/CH-inventory.svg?style=for-the-badge
-[issues-url]: https://github.com/jazznerd206/CH-inventory/issues
-[license-shield]: https://img.shields.io/github/license/jazznerd206/CH-inventory.svg?style=for-the-badge
-[license-url]: https://github.com/jazznerd206/CH-inventory/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/andrew-miller-113a1a195/
+> Only one report is available for now, which is all materials updated in the previous rolling month period
+**MORE COMING SOON**
 
 ## License
 * Licensed under the Unlicense, meaning you can use this project or its code in any way you desire. Have at it!! See LICENSE.md for more info.
@@ -179,3 +172,12 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+
+[contributors-shield]: https://img.shields.io/github/contributors/jazznerd206/CH-inventory.svg?style=for-the-badge
+[contributors-url]: https://github.com/jazznerd206/CH-inventory/graphs/contributors
+[issues-shield]: https://img.shields.io/github/issues/jazznerd206/CH-inventory.svg?style=for-the-badge
+[issues-url]: https://github.com/jazznerd206/CH-inventory/issues
+[license-shield]: https://img.shields.io/github/license/jazznerd206/CH-inventory.svg?style=for-the-badge
+[license-url]: https://github.com/jazznerd206/CH-inventory/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/andrew-miller-113a1a195/

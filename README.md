@@ -178,6 +178,6 @@ Contributions are what make the open source community such an amazing place to b
 [issues-shield]: https://img.shields.io/github/issues/jazznerd206/CH-inventory.svg?style=for-the-badge
 [issues-url]: https://github.com/jazznerd206/CH-inventory/issues
 [license-shield]: https://img.shields.io/github/license/jazznerd206/CH-inventory.svg?style=for-the-badge
-[license-url]: https://github.com/jazznerd206/CH-inventory/LICENSE.txt
+[license-url]: https://github.com/jazznerd206/CH-inventory/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/andrew-miller-113a1a195/

@@ -16,6 +16,7 @@ module.exports = function(app) {
   app.post('/register', (req, res) => {
     const newUser = {
         username: req.body.registerUsername,
+        email: req.body.registerEmail,
         password: req.body.registerPassword
     }
     // ==========================================

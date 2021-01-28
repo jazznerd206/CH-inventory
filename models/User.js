@@ -14,7 +14,7 @@ const User = new Schema({
     email: {
         type: String, 
         lowercase: true, 
-        unique: true, 
+        unique: false, 
         required: false, 
         match: [/\S+@\S+\.\S+/, 'is invalid'], 
         index: true},
